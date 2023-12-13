@@ -1,0 +1,32 @@
+#email to which errors will be sent
+email: ""
+#Location of the samples json file produced with the fastq2json.py script 
+samples: "./samples.json"
+#Output directory  
+output_dir: ""
+#Temporary directory
+temp_dir: ""
+#Currently "mixed" and "mm10" and "hg38" available
+assembly: ""
+#Number of chunks to split fastq
+num_chunks: 12 
+#Star Indexes
+star_index:
+    mm10: "assets/index_mm10"
+    hg38: "assets/index_hg38"
+    mixed: "assets/index_mixed"
+#Bowtie2 Indexes
+bowtie2_index:
+    hg38: "assets/index_hg38_ncRNA"
+    mm10: "assets/index_mm10_ncRNA"
+    mixed: "assets/index_mixed_ncRNA"
+#GTF Path for STAR alignment
+gtf_path: 
+    hg38: "assets/gencode.v21.gtf"
+    mm10: "assets/gencode.vM25.gtf"
+    mixed: "assets/gencode_mixed_human_mouse.gtf"
+#Bed for masking leftover mapped rRNAs and other repetitive RNAs
+repeat_bed: 
+    hg38: "assets/repeats.RNA.hg38.bed"
+    mm10: "assets/repeats.RNA.mm10.bed"
+    mixed: "assets/repeats.RNA.combined.hg38.mm10.bed"
