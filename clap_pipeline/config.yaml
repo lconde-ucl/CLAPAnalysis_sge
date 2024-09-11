@@ -5,25 +5,25 @@ samples: "./samples.json"
 #Output directory  
 output_dir: ""
 #Temporary directory
-temp_dir: ""
+temp_dir: "temp"
 #Currently "mixed" and "mm10" and "hg38" available
-assembly: ""
+assembly: "mixed"
 #Number of chunks to split fastq
 num_chunks: 12 
 #Star Indexes
 star_index:
-    mm10: "assets/index_mm10"
-    hg38: "assets/index_hg38"
-    mixed: "assets/index_mixed"
+    mm10: "assets/STAR_index/index_mm10"
+    hg38: "assets/STAR_index/index_hg38"
+    mixed: "assets/STAR_index/index_mixed"
 #Bowtie2 Indexes
 bowtie2_index:
-    hg38: "assets/index_hg38_ncRNA"
-    mm10: "assets/index_mm10_ncRNA"
-    mixed: "assets/index_mixed_ncRNA"
+    hg38: "assets/bowtie2_index/index_hg38_ncRNA"
+    mm10: "assets/bowtie2_index/index_mm10_ncRNA"
+    mixed: "assets/bowtie2_index/index_mixed_ncRNA"
 #GTF Path for STAR alignment
 gtf_path: 
-    hg38: "assets/gencode.v21.gtf"
-    mm10: "assets/gencode.vM25.gtf"
+    hg38: "assets/gencode.v21.annotation.gtf"
+    mm10: "assets/gencode.vM25.annotation.gtf"
     mixed: "assets/gencode_mixed_human_mouse.gtf"
 #Bed for masking leftover mapped rRNAs and other repetitive RNAs
 repeat_bed: 
