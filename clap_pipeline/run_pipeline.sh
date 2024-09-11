@@ -4,11 +4,14 @@ snakemake \
 --snakefile Snakefile \
 --use-conda \
 --rerun-incomplete \
--j 128 \
---cluster-config cluster.yaml \
+-j 2 \
 --configfile config.yaml \
---cluster "sbatch -c {cluster.cpus} \
--t {cluster.time} -N {cluster.nodes} \
---mem {cluster.mem} \
---output {cluster.output} \
---error {cluster.error}"
+--cluster-config cluster.yaml \
+--cluster "qsub -pe smp {cluster.cpus} \
+-l h_rt={cluster.time} \
+-l mem={cluster.mem} \
+-o {cluster.output} \
+-e {cluster.error} \
+-V -cwd"
+
+
