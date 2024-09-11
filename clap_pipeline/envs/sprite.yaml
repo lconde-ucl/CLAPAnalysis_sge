@@ -2,6 +2,8 @@ name: sprite
 channels:
   - anaconda
   - bioconda
+  - conda-forge
+  - defaults
 dependencies:
   - python=3.6
   - pigz
