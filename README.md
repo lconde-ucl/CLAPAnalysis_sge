@@ -14,9 +14,9 @@ To use the pipeline in myriad:
 
 As the authors mentioned: *"For reproducibility, we recommend keeping the pipeline, input, and output directories together. In other words, the complete directory should look like this GitHub repository with an extra workup subdirectory created upon running this pipeline."*
 
-'''{bash}
+```{bash}
 git clone https://github.com/lconde-ucl/CLAPAnalysis_sge.git
-'''
+```
 
 ### 2. Navigate to the main folder and bring your FASTQ files (these need to use a _R{1,2}.fastq.gz nomenclature)
 
