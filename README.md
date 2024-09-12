@@ -1,3 +1,78 @@
+
+# CLAPAnalaysis_sge 
+
+This is a fork of the [CLAPAnalysis pipeline](https://github.com/GuttmanLab/CLAPAnalysis/), modified to work on the UCL cluster Myriad.
+
+It performs the same workflow that the original pipeline (described below) **except for the Repeat masking** step (not working). This will
+be included in the future if we make it work.
+
+The documentation for the original pipeline is below.
+
+To use the pipeline in myriad:
+
+### 1. Download the pipeline
+
+As the authors mentioned: *"For reproducibility, we recommend keeping the pipeline, input, and output directories together. In other words, the complete directory should look like this GitHub repository with an extra workup subdirectory created upon running this pipeline."*
+
+'''{bash}
+git clone https://github.com/lconde-ucl/CLAPAnalysis_sge.git
+'''
+
+### 2. Navigate to the main folder and bring your FASTQ files (these need to use a _R{1,2}.fastq.gz nomenclature)
+
+E.g.:
+
+```{bash}
+cd CLAPAnalysis_sge/clap_pipeline
+
+mkdir fastqs
+cd fastqs/
+rsync -arv rds2:/rdss/rd01/ritd-ag-project-rd011h-shend55/PRC2_TEMP/SAFA_MinusTag_CLIP_1.fastq.gz .
+rsync -arv rds2:/rdss/rd01/ritd-ag-project-rd011h-shend55/PRC2_TEMP/SAFA_MinusTag_CLIP_2.fastq.gz .
+ln -s SAFA_MinusTag_CLIP_1.fastq.gz SAFA_MinusTag_CLIP_R1.fastq.gz 
+ln -s SAFA_MinusTag_CLIP_2.fastq.gz SAFA_MinusTag_CLIP_R2.fastq.gz 
+```
+
+
+### 3. Create the sample file (samples.json)
+
+```{bash}
+./fastq2json.py --fastq_dir fastqs/
+```
+
+### 3. Load snakemake/7.32.4 (needs to be <v8 because the cluster options were removed after v8)
+
+module load blic-modules
+module load snakemake/7.32.4 
+activate_snakemake
+
+
+### 4. Modify the config.yaml (optional)
+
+* Email address: Add an email address if you want to receive an email if the pipeline fails (default: none)
+* Assembly: Specify the assembly, hg38, mm10 or mixed (default: mixed)
+```
+email: ""
+assembly: "mixed"
+```
+
+### 5. Run the pipeline
+
+```{bash}
+./run_pipeline.sh 
+```
+
+### 6. The output will be in the workup folder
+
+
+
+-----------------
+-----------------
+-----------------
+
+
+
+
 Contents  
   - [Overview](#overview)
   - [Quick Start](#quick-start)
