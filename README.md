@@ -64,7 +64,31 @@ assembly: "mixed"
 
 ### 6. The output will be in the workup folder
 
+E.g.:
 
+```
+./CLAPAnalysis_sge/clap_pipeline/workup/
+├── [ 68K]  alignments
+│   ├── [4.0K]  SAFA_MinusTag_CLIP.part_000._STARgenome/
+│   ├── [4.0K]  SAFA_MinusTag_CLIP.part_001._STARgenome/
+│   ├── [4.0K]  SAFA_MinusTag_CLIP.part_002._STARgenome/
+│   ├── [4.0K]  SAFA_MinusTag_CLIP.part_003._STARgenome/
+│   ├── [4.0K]  SAFA_MinusTag_CLIP.part_004._STARgenome/
+│   ├── [4.0K]  SAFA_MinusTag_CLIP.part_005._STARgenome/
+│   ├── [4.0K]  SAFA_MinusTag_CLIP.part_006._STARgenome/
+│   ├── [4.0K]  SAFA_MinusTag_CLIP.part_007._STARgenome/
+│   ├── [4.0K]  SAFA_MinusTag_CLIP.part_008._STARgenome/
+│   ├── [4.0K]  SAFA_MinusTag_CLIP.part_009._STARgenome/
+│   ├── [4.0K]  SAFA_MinusTag_CLIP.part_010._STARgenome/
+│   └── [4.0K]  SAFA_MinusTag_CLIP.part_011._STARgenome
+├── [4.0K]  fastqs/
+├── [ 16K]  logs/
+│   └── [ 12K]  cluster/
+├── [4.0K]  splitfq/
+└── [ 16K]  trimmed/
+
+ 112K used in 18 directories
+```
 
 -----------------
 -----------------
