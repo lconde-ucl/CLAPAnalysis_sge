@@ -6,8 +6,6 @@ This is a fork of the [CLAPAnalysis pipeline](https://github.com/GuttmanLab/CLAP
 It performs the same workflow that the original pipeline (described below) **except for the Repeat masking** step (not working). This will
 be included in the future if we make it work.
 
-The documentation for the original pipeline is below.
-
 To use the pipeline in myriad:
 
 ### 1. Download the pipeline
@@ -90,6 +88,8 @@ E.g.:
 
  112K used in 18 directories
 ```
+
+The documentation from the original pipeline is below.
 
 -----------------
 -----------------
