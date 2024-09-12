@@ -42,10 +42,11 @@ ln -s SAFA_MinusTag_CLIP_2.fastq.gz SAFA_MinusTag_CLIP_R2.fastq.gz
 
 ### 3. Load snakemake/7.32.4 (needs to be <v8 because the cluster options were removed after v8)
 
+```{bash}
 module load blic-modules
 module load snakemake/7.32.4 
 activate_snakemake
-
+```
 
 ### 4. Modify the config.yaml (optional)
 
