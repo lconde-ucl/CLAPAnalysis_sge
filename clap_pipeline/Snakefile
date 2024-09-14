@@ -187,7 +187,7 @@ PICARD_DEDUP = expand(out_dir + "workup/alignments/{sample}.merged.dedup.star.ba
 
 PICARD_INDEX = expand(out_dir + "workup/alignments/{sample}.merged.dedup.star.bam.bai", sample = ALL_SAMPLES)
 
-#REPEAT_MASK = expand(out_dir + "workup/alignments/{sample}.merged.dedup.star.masked.bam", sample = ALL_SAMPLES)
+REPEAT_MASK = expand(out_dir + "workup/alignments/{sample}.merged.dedup.star.masked.bam", sample = ALL_SAMPLES)
 
 MERGE_ALL_BAMS = expand(out_dir + "workup/alignments/{sample}.merged.all.bam", sample = ALL_SAMPLES)
 
@@ -447,26 +447,26 @@ rule picard_index:
         samtools index {input}
         '''
 
-#rule repeat_mask:
-#    input:
-#        out_dir + "workup/alignments/{sample}.merged.dedup.star.bam"
-#    output:
-#        out_dir + "workup/alignments/{sample}.merged.dedup.star.masked.bam"
-#    conda:
-#        "envs/sprite.yaml"
-#    threads:
-#        10
-#    log:
-#        out_dir + "workup/logs/{sample}.repeatmask.log"
-#    shell:
-#        '''
-#        java -Xmx20g -Dsnappy.disable=true -jar {repeat_mask} {input} {repeat_bed} {output}
-#        '''
+rule repeat_mask:
+    input:
+        out_dir + "workup/alignments/{sample}.merged.dedup.star.bam"
+    output:
+        out_dir + "workup/alignments/{sample}.merged.dedup.star.masked.bam"
+    conda:
+        "envs/sprite.yaml"
+    threads:
+        10
+    log:
+        out_dir + "workup/logs/{sample}.repeatmask.log"
+    shell:
+        '''
+        bedtools intersect -v -abam {input} -b {repeat_bed} > {output}
+	'''
 
 rule merge_all_bams:
     input:
         bt2 = expand(out_dir + "workup/alignments/{{sample}}.part_{splitid}.bowtie2.sorted.mapped.bam", splitid=NUM_CHUNKS),
-        star = out_dir + "workup/alignments/{sample}.merged.dedup.star.bam"
+        star = out_dir + "workup/alignments/{sample}.merged.dedup.star.masked.bam"
     output:
         out_dir + "workup/alignments/{sample}.merged.all.bam"
     conda:
