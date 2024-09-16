@@ -27,6 +27,6 @@ gtf_path:
     mixed: "assets/gencode_mixed_human_mouse.gtf"
 #Bed for masking leftover mapped rRNAs and other repetitive RNAs
 repeat_bed: 
-    hg38: "assets/repeats.RNA.hg38.bed"
-    mm10: "assets/repeats.RNA.mm10.bed"
-    mixed: "assets/repeats.RNA.combined.hg38.mm10.bed"
+    hg38: "assets/repeats.RNA.hg38.LC.bed"
+    mm10: "assets/repeats.RNA.mm10.LC.bed"
+    mixed: "assets/repeats.RNA.combined.hg38.mm10.LC.bed"
