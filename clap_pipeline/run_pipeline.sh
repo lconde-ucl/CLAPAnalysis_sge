@@ -8,6 +8,7 @@ snakemake \
 --configfile config.yaml \
 --cluster-config cluster.yaml \
 --cluster "qsub -pe smp {cluster.cpus} \
+-P BLIC \
 -l h_rt={cluster.time} \
 -l mem={cluster.mem} \
 -o {cluster.output} \
