@@ -460,7 +460,8 @@ rule repeat_mask:
         out_dir + "workup/logs/{sample}.repeatmask.log"
     shell:
         '''
-        bedtools intersect -v -abam {input} -b {repeat_bed} > {output}
+	java -Xmx20g -Dsnappy.disable=true -jar {repeat_mask} {input} {repeat_bed} {output}
+        #bedtools intersect -v -abam {input} -b {repeat_bed} > {output}
 	'''
 
 rule merge_all_bams:
