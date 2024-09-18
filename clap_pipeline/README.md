@@ -1,10 +1,7 @@
 
 # CLAPAnalaysis_sge 
 
-This is a fork of the [CLAPAnalysis pipeline](https://github.com/GuttmanLab/CLAPAnalysis/), modified to work on the UCL cluster Myriad.
-
-It performs the same workflow that the original pipeline (described below) **except for the Repeat masking** step that was modified because the
-original FilterBlacklist.jar does not work (_java.lang.NoClassDefFoundError: net/sf/samtools/util/CloseableIterator_)
+This is a fork of the [CLAPAnalysis pipeline](https://github.com/GuttmanLab/CLAPAnalysis/), modified to work on the UCL cluster Myriad. It performs the same workflow that the original pipeline (described below)
 
 To use the pipeline in myriad:
 
