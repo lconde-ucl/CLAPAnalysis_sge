@@ -4,7 +4,7 @@ snakemake \
 --snakefile Snakefile \
 --use-conda \
 --rerun-incomplete \
--j 2 \
+-j 100 \
 --configfile config.yaml \
 --cluster-config cluster.yaml \
 --cluster "qsub -pe smp {cluster.cpus} \
