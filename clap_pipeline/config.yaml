@@ -30,3 +30,5 @@ repeat_bed:
     hg38: "assets/repeats.RNA.hg38.LC.bed"
     mm10: "assets/repeats.RNA.mm10.LC.bed"
     mixed: "assets/repeats.RNA.combined.hg38.mm10.LC.bed"
+#- LC: expose dedup false/true option
+dedup: "false"

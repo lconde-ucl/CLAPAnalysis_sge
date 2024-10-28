@@ -46,6 +46,13 @@ repeat_mask = "scripts/FilterBlacklist.jar"
 ##############################################################################
 
 try:
+    dedup = config['dedup']
+    print('Remove duplicates:', dedup)
+except:
+    dedup = 'true'
+    print('Defaulting to dedup = true')
+
+try:
     assembly = config['assembly']
     assert assembly in ['mixed', 'mm10', 'hg38'], 'Only "mixed" or "mm10" or "hg38" currently supported'
     print('Using', assembly)
@@ -428,7 +435,7 @@ rule picard_dedup:
         out_dir + "workup/logs/{sample}.picard.dedup.log"
     shell:
         '''
-        picard -Xmx20g  MarkDuplicates I={input} O={output.bam} M={output.log} REMOVE_DUPLICATES=true
+        picard -Xmx20g  MarkDuplicates I={input} O={output.bam} M={output.log} REMOVE_DUPLICATES={dedup}
         '''
 
 rule picard_index:
