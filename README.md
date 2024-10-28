@@ -1,7 +1,7 @@
 
 # CLAPAnalaysis_sge 
 
-This is a fork of the [CLAPAnalysis pipeline](https://github.com/GuttmanLab/CLAPAnalysis/), modified to work on the UCL cluster Myriad. It performs the same workflow that the original pipeline (described below)
+This is a fork of the [CLAPAnalysis pipeline](https://github.com/GuttmanLab/CLAPAnalysis/), modified to work on the UCL cluster Myriad. It performs the same workflow that the original pipeline (described below), and includes a 'removeduplicates' option to remove/include duplicates in the picard MarkDuplicates step
 
 To use the pipeline in myriad:
 
@@ -47,9 +47,11 @@ activate_snakemake
 
 * Email address: Add an email address if you want to receive an email if the pipeline fails (default: none)
 * Assembly: Specify the assembly, hg38, mm10 or mixed (default: mixed)
+* removeduplicates: if you don't want to remove duplicates in the picard MarkDuplicates step, change this to false (default: true)
 ```
 email: ""
 assembly: "mixed"
+removeduplicates: "true"
 ```
 
 ### 5. Run the pipeline
