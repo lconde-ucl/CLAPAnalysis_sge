@@ -1,5 +1,5 @@
 #email to which errors will be sent
-email: "l.conde@ucl.ac.uk"
+email: ""
 #Location of the samples json file produced with the fastq2json.py script 
 samples: "./samples.json"
 #Output directory  
