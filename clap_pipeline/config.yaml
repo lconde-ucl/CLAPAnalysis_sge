@@ -1,11 +1,11 @@
 #email to which errors will be sent
-email: ""
+email: "l.conde@ucl.ac.uk"
 #Location of the samples json file produced with the fastq2json.py script 
 samples: "./samples.json"
 #Output directory  
 output_dir: ""
 #Temporary directory
-temp_dir: "temp"
+temp_dir: "./tmp"
 #Currently "mixed" and "mm10" and "hg38" available
 assembly: "mixed"
 #Number of chunks to split fastq

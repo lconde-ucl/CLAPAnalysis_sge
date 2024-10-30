@@ -435,7 +435,8 @@ rule picard_dedup:
         out_dir + "workup/logs/{sample}.picard.dedup.log"
     shell:
         '''
-        picard -Xmx20g  MarkDuplicates I={input} O={output.bam} M={output.log} REMOVE_DUPLICATES={removeduplicates}
+	mkdir -p {temp_dir}
+        picard -Xmx20g -Djava.io.tmpdir={temp_dir} MarkDuplicates I={input} O={output.bam} M={output.log} REMOVE_DUPLICATES={removeduplicates}
         '''
 
 rule picard_index:
@@ -467,7 +468,8 @@ rule repeat_mask:
         out_dir + "workup/logs/{sample}.repeatmask.log"
     shell:
         '''
-	java -Xmx20g -Dsnappy.disable=true -jar {repeat_mask} {input} {repeat_bed} {output}
+	mkdir -p {temp_dir}
+	java -Xmx20g -Djava.io.tmpdir={temp_dir} -Dsnappy.disable=true -jar {repeat_mask} {input} {repeat_bed} {output}
         #bedtools intersect -v -abam {input} -b {repeat_bed} > {output}
 	'''
 
