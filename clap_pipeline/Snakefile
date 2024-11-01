@@ -468,9 +468,9 @@ rule repeat_mask:
         out_dir + "workup/logs/{sample}.repeatmask.log"
     shell:
         '''
-	mkdir -p {temp_dir}
-	java -Xmx20g -Djava.io.tmpdir={temp_dir} -Dsnappy.disable=true -jar {repeat_mask} {input} {repeat_bed} {output}
-        #bedtools intersect -v -abam {input} -b {repeat_bed} > {output}
+	#mkdir -p {temp_dir}
+	#java -Xmx20g -Djava.io.tmpdir={temp_dir} -Dsnappy.disable=true -jar {repeat_mask} {input} {repeat_bed} {output}
+        bedtools intersect -v -abam {input} -b {repeat_bed} > {output}
 	'''
 
 rule merge_all_bams:
