@@ -1,7 +1,30 @@
 
 # CLAPAnalaysis_sge 
 
-This is a fork of the [CLAPAnalysis pipeline](https://github.com/GuttmanLab/CLAPAnalysis/), modified to work on the UCL cluster Myriad. It performs the same workflow that the original pipeline (described below), and includes a 'removeduplicates' option to remove/include duplicates in the picard MarkDuplicates step
+This is a fork of the [CLAPAnalysis pipeline](https://github.com/GuttmanLab/CLAPAnalysis/), modified to work on the UCL cluster Myriad. It performs the same workflow that the original pipeline (described below), exceopt for the following two modifications:
+
+- Addition of a removeduplicates option, to allow the user to remove (default) or include duplicates in the `picard MarkDuplicates` step
+- The `repeat masking` step was modified to run **bedtools instersect** instead of **FilterBlacklist.jar**, because the latter appears remove duplicates as well:
+
+```
+# Before repeat masking
+$ ls -ltr  workup/alignments/*.merged.dedup.star.bam | cut -d " " -f 10 | xargs -I {} samtools flagstat {} | grep duplicates
+487828 + 0 duplicates
+6412520 + 0 duplicates
+1254932 + 0 duplicates
+165700 + 0 duplicates
+371917 + 0 duplicates
+3358908 + 0 duplicates
+
+# After repeat masking
+$ ls -ltr  workup/alignments/*.merged.dedup.star.masked.bam | cut -d " " -f 10 | xargs -I {} samtools flagstat {} | grep duplicates
+0 + 0 duplicates
+0 + 0 duplicates
+0 + 0 duplicates
+0 + 0 duplicates
+[…]
+```
+ 
 
 To use the pipeline in myriad:
 
